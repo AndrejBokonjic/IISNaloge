@@ -19,7 +19,7 @@ jobs:
 
       - name: Install uv
         run: |
-          pipx install uv
+          pip install uv
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -28,7 +28,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          uv sync --frozen
+          uv sync --python 3.12
 
       - name: Run fetch script
         run: |
