@@ -30,6 +30,10 @@ jobs:
         run: |
           uv sync --python $(which python)
 
+      - name: Install dependencies
+        run: |
+          pip install requests pandas numpy lxml pathlib datetime
+
       - name: Run fetch script
         run: |
           python src/data/fetch_air_data.py
