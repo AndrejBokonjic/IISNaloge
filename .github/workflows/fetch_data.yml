@@ -45,8 +45,8 @@ jobs:
       - name: Commit data changes
         run: |
           git add data
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
+          git config --local user.email "andrej.bokonjic@student.um.si"
+          git config --local user.name "AndrejBokonjic"
           git commit -m "Updated raw air data on `date` with GitHub Actions"
 
       - name: Push changes
