@@ -32,11 +32,11 @@ jobs:
 
       - name: Run fetch script
         run: |
-          uv run python src/data/fetch_air_data.py
+          python src/data/fetch_air_data.py
 
       - name: Run pre-process script
         run: |
-          uv run python src/data/preprocess_air_data.py
+          python src/data/preprocess_air_data.py
 
       - name: Commit data changes
         run: |
