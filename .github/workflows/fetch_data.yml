@@ -5,9 +5,6 @@ on:
   schedule:
     - cron: '0 0 * * *'
 
-permissions:
-  contents: write
-
 jobs:
   fetch_air:
     name: Fetch and pre-process air data
@@ -53,5 +50,6 @@ jobs:
           git commit -m "Updated raw air data on `date` with GitHub Actions"
 
       - name: Push changes
-        run: |
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.PAT_TOKEN }}
