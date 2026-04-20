@@ -21,6 +21,9 @@ jobs:
         run: |
           pip install uv
 
+      - name: Setup DVC
+        uses: iterative/setup-dvc@v1
+
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
@@ -34,6 +37,12 @@ jobs:
         run: |
           pip install requests pandas numpy lxml pathlib datetime
 
+      - name: DVC pull data
+        run: |
+          dvc remote modify origin --local access_key_id ${{ secrets.DAGSHUB_ACCESS_KEY_ID }}
+          dvc remote modify origin --local secret_access_key ${{ secrets.DAGSHUB_SECRET_ACCESS_KEY }}
+          dvc pull
+
       - name: Run fetch script
         run: |
           python src/data/fetch_air_data.py
@@ -44,9 +53,11 @@ jobs:
 
       - name: Commit data changes
         run: |
-          git add data
+          dvc add data
+          dvc push
           git config --local user.email "andrej.bokonjic@student.um.si"
           git config --local user.name "AndrejBokonjic"
+          git add data.dvc
           git commit -m "Updated raw air data on `date` with GitHub Actions"
 
       - name: Push changes
