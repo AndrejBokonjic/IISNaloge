@@ -1,0 +1,7 @@
+[core]
+    remote = origin
+['remote "origin"']
+    url = https://dagshub.com/AndrejBokonjic/IISNaloge.dvc
+    auth = basic
+    user = AndrejBokonjic
+    password = afae8dc6efa2ccdcaa7eb4ecd7f4111a7940ee40
