@@ -3,6 +3,11 @@ import pandas as pd
 from lxml import etree as ET
 from pathlib import Path
 
+import yaml
+
+params = yaml.safe_load(open("params.yaml"))["preprocess"]
+sifra = params["station"]
+
 def preprocess_air_data():
     # Open XML file
     with open("data/raw/air/air_data.xml", "rb") as file:

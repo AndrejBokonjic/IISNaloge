@@ -186,6 +186,7 @@ dependencies = [
     { name = "numpy" },
     { name = "pandas" },
     { name = "pyaml" },
+    { name = "pyyaml" },
     { name = "requests" },
     { name = "scikit-learn" },
 ]
@@ -196,6 +197,7 @@ requires-dist = [
     { name = "numpy", specifier = ">=2.4.4" },
     { name = "pandas", specifier = ">=3.0.2" },
     { name = "pyaml", specifier = ">=26.2.1" },
+    { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "requests", specifier = ">=2.33.1" },
     { name = "scikit-learn", specifier = ">=1.8.0" },
 ]

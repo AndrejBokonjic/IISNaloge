@@ -2,6 +2,10 @@ import requests
 from datetime import datetime
 import xml.etree.ElementTree as ET
 
+import yaml
+
+params = yaml.safe_load(open("params.yaml"))["fetch"]
+url = params["url"]
 def fetch_air_data():
     try:
         # URL to fetch the XML data

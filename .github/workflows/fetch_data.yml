@@ -35,7 +35,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install requests pandas numpy lxml pathlib datetime
+          pip install requests pandas numpy lxml pathlib datetime pyyaml
 
       - name: DVC pull data
         run: |
