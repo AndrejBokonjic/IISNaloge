@@ -21,7 +21,7 @@ stages:
   preprocess:
     cmd: "uv run python src/data/preprocess_air_data.py\ngit commit -am \"Updated
       preprocessed air data on `date` with DVC pipeline and GitHub workflows\" ||
-      true\ngit push || true\ndvc push || true\n"
+      true\ngit push || true\npython3 -m dvc push || true\n"
     deps:
     - path: data/raw/air/air_data.xml
       hash: md5
