@@ -7,7 +7,7 @@ on:
 
 jobs:
   fetch_air:
-    name: Fetch and pre-process air data
+    name: Run DVC pipeline
     runs-on: ubuntu-latest
 
     steps:
@@ -27,38 +27,32 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.14"
+          python-version: "3.12"
+
+      - name: Setup Git
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
 
       - name: Install dependencies
         run: |
-          uv sync --python $(which python)
+          uv sync --frozen
 
-      - name: Install dependencies
-        run: |
-          pip install requests pandas numpy lxml pathlib datetime pyyaml
-
-      - name: DVC pull data
+      - name: Setup DVC remote
         run: |
           dvc remote modify origin --local access_key_id ${{ secrets.DAGSHUB_ACCESS_KEY_ID }}
           dvc remote modify origin --local secret_access_key ${{ secrets.DAGSHUB_SECRET_ACCESS_KEY }}
+
+      - name: Run DVC pipeline
+        run: |
           dvc pull
-
-      - name: Run fetch script
-        run: |
-          python src/data/fetch_air_data.py
-
-      - name: Run pre-process script
-        run: |
-          python src/data/preprocess_air_data.py
-
-      - name: Commit data changes
-        run: |
-          dvc add data
+          dvc repro
           dvc push
-          git config --local user.email "andrej.bokonjic@student.um.si"
-          git config --local user.name "AndrejBokonjic"
-          git add data.dvc
-          git commit -m "Updated raw air data on `date` with GitHub Actions"
+
+      - name: Commit dvc.lock
+        run: |
+          git add dvc.lock
+          git commit -m "Update dvc.lock on $(date)" || true
 
       - name: Push changes
         uses: ad-m/github-push-action@master
