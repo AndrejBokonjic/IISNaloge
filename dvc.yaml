@@ -27,3 +27,11 @@ stages:
     outs:
       - data/preprocessed/air:
           persist: true
+
+  validate:
+    cmd: uv run python src/data/validate_air_data.py
+    deps:
+      - src/data/validate_air_data.py
+      - data/preprocessed/air
+    params:
+      - preprocess.station
