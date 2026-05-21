@@ -5,13 +5,16 @@ Zagon: uv run python gx/run_checkpoint.py
 
 import sys
 from pathlib import Path
+
 import great_expectations as gx
 
-gx_dir = Path(__file__).parent.parent.parent / "gx"
+# Pot do GE konteksta in preprocessed podatkov
+project_root = Path(__file__).parent.parent.parent
+gx_dir = project_root / "gx"
+preprocessed_dir = project_root / "data/preprocessed/air"
+
 context = gx.get_context(context_root_dir=str(gx_dir))
 
-# Poišči vsa merilna mesta
-preprocessed_dir = Path(__file__).parent.parent / "data/preprocessed/air"
 stations = [f.stem for f in preprocessed_dir.glob("*.csv")]
 
 if not stations:
@@ -41,7 +44,6 @@ for station in stations:
         print(f"❌ Validacija neuspešna za postajo {station}!")
         all_passed = False
 
-# Generiraj poročilo
 context.build_data_docs()
 print("\n📄 Poročilo generirano v: gx/uncommitted/data_docs/local_site/index.html")
 

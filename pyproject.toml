@@ -15,5 +15,6 @@ dependencies = [
     "great-expectations==0.18.21",
     "dvc>=3.67.1",
     "evidently>=0.7.1,<0.8.0",
+    "dvc-s3>=3.3.0",
 ]
 

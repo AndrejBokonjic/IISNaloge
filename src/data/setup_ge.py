@@ -11,10 +11,12 @@ from pathlib import Path
 import great_expectations as gx
 
 gx_dir = Path(__file__).parent.parent.parent / "gx"
-context = gx.get_context(context_root_dir=str(gx_dir))
 
 # Poišči vsa merilna mesta
-preprocessed_dir = Path("data/preprocessed/air")
+project_root = Path(__file__).parent.parent.parent
+preprocessed_dir = project_root / "data/preprocessed/air"
+
+context = gx.get_context(context_root_dir=str(gx_dir))
 stations = [f.stem for f in preprocessed_dir.glob("*.csv")]
 
 if not stations:
