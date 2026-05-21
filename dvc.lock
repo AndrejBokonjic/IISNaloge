@@ -24,8 +24,8 @@ stages:
     deps:
     - path: data/raw/air/air_data.xml
       hash: md5
-      md5: 9e1b65edc1d7a266a28056e097642479
-      size: 1169965
+      md5: 4c850d7a48223b2e76cb96bc8ac0b7f6
+      size: 1169941
     - path: src/data/preprocess_air_data.py
       hash: md5
       md5: fdc54d03a62ec35f826fc4f19a376d77
@@ -36,16 +36,16 @@ stages:
     outs:
     - path: data/preprocessed/air
       hash: md5
-      md5: 7fde0bd93b904bcff87b52448da011c8.dir
-      size: 81557
+      md5: 5a9ac513173e3b6f65b93f37b66d58c5.dir
+      size: 81566
       nfiles: 23
   validate:
     cmd: "uv run python src/data/run_checkpoint.py\n"
     deps:
     - path: data/preprocessed/air/
       hash: md5
-      md5: 7fde0bd93b904bcff87b52448da011c8.dir
-      size: 81557
+      md5: 5a9ac513173e3b6f65b93f37b66d58c5.dir
+      size: 81566
       nfiles: 23
     - path: src/data/run_checkpoint.py
       hash: md5
@@ -54,16 +54,16 @@ stages:
     outs:
     - path: gx/uncommitted
       hash: md5
-      md5: 9ad1ca10181d7f4a3343a421174c0a74.dir
-      size: 17197495
-      nfiles: 519
+      md5: 8b97ce242115f9fa852ddb1554868796.dir
+      size: 18439379
+      nfiles: 512
   test_data:
     cmd: "uv run python src/data/test_data.py\n"
     deps:
     - path: data/preprocessed/air/
       hash: md5
-      md5: 7fde0bd93b904bcff87b52448da011c8.dir
-      size: 81557
+      md5: 5a9ac513173e3b6f65b93f37b66d58c5.dir
+      size: 81566
       nfiles: 23
     - path: src/data/test_data.py
       hash: md5
@@ -72,8 +72,8 @@ stages:
     outs:
     - path: data/reference/air
       hash: md5
-      md5: 8b42b8815e2fb8a17bab94450892f3fc.dir
-      size: 83483
+      md5: 61b262a9fe06cae4d693b399a736bc32.dir
+      size: 83481
       nfiles: 23
   train:
     cmd: "uv run python src/model/train.py\ngit commit -am \"Updated model on `date`
