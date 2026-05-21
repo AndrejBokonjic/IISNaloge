@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 import great_expectations as gx
 
-gx_dir = Path(__file__).parent
+gx_dir = Path(__file__).parent.parent.parent / "gx"
 context = gx.get_context(context_root_dir=str(gx_dir))
 
 # Poišči vsa merilna mesta
