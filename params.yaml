@@ -3,3 +3,10 @@ fetch:
 
 preprocess:
   station: "E410"
+
+train:
+  station: "E410"
+  test_size: 48
+  window_size: 24
+  target_col: "pm10"
+  random_state: 42
