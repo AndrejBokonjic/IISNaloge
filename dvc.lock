@@ -53,3 +53,21 @@ stages:
       md5: 476dea96a786be499213b05b726b4785.dir
       size: 15860971
       nfiles: 473
+  test_data:
+    cmd: "uv run python src/data/test_data.py\n"
+    deps:
+    - path: data/preprocessed/air/
+      hash: md5
+      md5: 8829c363a2647b10215d59237b2575d1.dir
+      size: 81557
+      nfiles: 23
+    - path: src/data/test_data.py
+      hash: md5
+      md5: 5b160f5148eee9785ac565833dd34c8f
+      size: 2701
+    outs:
+    - path: data/reference/air
+      hash: md5
+      md5: 751e5a3d69d3ee7c55f558fea38f6694.dir
+      size: 83477
+      nfiles: 23

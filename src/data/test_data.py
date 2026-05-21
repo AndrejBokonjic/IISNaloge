@@ -76,7 +76,14 @@ for station in stations:
         os.remove(reference_path)
         current = pd.read_csv(f"data/preprocessed/air/{station}.csv")
         current.to_csv(reference_path, index=False)
-
+# Ustvari index.html z linki na vsa poročila
+index_path = Path("reports/index.html")
+with open(index_path, "w") as f:
+    f.write("<html><head><title>Evidently Reports</title></head><body>")
+    f.write("<h1>Air Quality Data Testing Reports</h1><ul>")
+    for s in stations:
+        f.write(f'<li><a href="data_testing_report_{s}.html">{s}</a></li>')
+    f.write("</ul></body></html>")
 if not all_passed:
     print("\n❌ Nekateri testi so bili neuspešni!")
     sys.exit(1)
