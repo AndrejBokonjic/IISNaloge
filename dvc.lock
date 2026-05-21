@@ -24,8 +24,8 @@ stages:
     deps:
     - path: data/raw/air/air_data.xml
       hash: md5
-      md5: 74cfd74423e2ca83da43854428246f8b
-      size: 1169931
+      md5: 1ac2c267d010112475ec4c59f7243342
+      size: 1169940
     - path: src/data/preprocess_air_data.py
       hash: md5
       md5: fdc54d03a62ec35f826fc4f19a376d77
@@ -76,8 +76,8 @@ stages:
     deps:
     - path: data/preprocessed/air/
       hash: md5
-      md5: 5a9ac513173e3b6f65b93f37b66d58c5.dir
-      size: 81566
+      md5: 32af6cf18fbd0b4d961cadbc8faac022.dir
+      size: 81568
       nfiles: 23
     - path: src/data/test_data.py
       hash: md5
@@ -86,8 +86,8 @@ stages:
     outs:
     - path: data/reference/air
       hash: md5
-      md5: 61b262a9fe06cae4d693b399a736bc32.dir
-      size: 83481
+      md5: 42c3892c956a570e5a19a8e0f707de6a.dir
+      size: 83483
       nfiles: 23
   train:
     cmd: "uv run python src/model/train.py\ngit commit -am \"Updated model on `date`
