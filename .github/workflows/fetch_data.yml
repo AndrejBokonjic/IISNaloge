@@ -44,6 +44,9 @@ jobs:
           dvc pull
           dvc repro
           dvc push
+        env:
+          MLFLOW_TRACKING_USERNAME: ${{ secrets.MLFLOW_TRACKING_USERNAME }}
+          MLFLOW_TRACKING_PASSWORD: ${{ secrets.MLFLOW_TRACKING_PASSWORD }}
 
       - name: Commit dvc.lock
         run: |
