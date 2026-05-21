@@ -11,7 +11,7 @@ import great_expectations as gx
 context = gx.get_context()
 
 # Poišči vsa merilna mesta
-preprocessed_dir = Path("data/preprocessed/air")
+preprocessed_dir = Path(__file__).parent.parent / "data/preprocessed/air"
 stations = [f.stem for f in preprocessed_dir.glob("*.csv")]
 
 if not stations:
