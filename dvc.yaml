@@ -30,7 +30,7 @@ stages:
 
   validate:
     cmd: |
-      uv run python gx/run_checkpoint.py
+      uv run python src/data/run_checkpoint.py
     deps:
       - data/preprocessed/air/
     outs:
