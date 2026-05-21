@@ -63,14 +63,14 @@ stages:
       nfiles: 23
     - path: gx/expectations
       hash: md5
-      md5: 5d05fbc374347cbbf510dd225416dea2.dir
+      md5: 7a07a018169b198c7d9181e5913e6fdd.dir
       size: 45274
       nfiles: 24
     - path: gx/uncommitted
       hash: md5
-      md5: a6dee1b8510c16160a7478ea74fb4b5c.dir
-      size: 19776138
-      nfiles: 558
+      md5: 5d4b3fd7d98ed3288c0bf6ec0e65207a.dir
+      size: 21112900
+      nfiles: 604
   test_data:
     cmd: "uv run python src/data/test_data.py\n"
     deps:
