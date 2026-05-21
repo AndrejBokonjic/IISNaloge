@@ -63,8 +63,8 @@ stages:
       nfiles: 23
     - path: src/data/test_data.py
       hash: md5
-      md5: 5b160f5148eee9785ac565833dd34c8f
-      size: 2701
+      md5: e46986ac1df82e1a5a28c5ae00f34708
+      size: 3087
     outs:
     - path: data/reference/air
       hash: md5
