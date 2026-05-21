@@ -3,7 +3,7 @@ stages:
   fetch:
     cmd: "uv run python src/data/fetch_air_data.py\ngit commit -am \"Updated raw air
       data on `date` with DVC pipeline and GitHub workflows\" || true\ngit push ||
-      true\npython3 -m dvc push || true\n"
+      true\ndvc push || true\n"
     deps:
     - path: src/data/fetch_air_data.py
       hash: md5
@@ -11,13 +11,12 @@ stages:
       size: 985
     params:
       params.yaml:
-        fetch.url: 
-          https://www.arso.gov.si/xml/zrak/ones_zrak_urni_podatki_7dni.xml
+        fetch.url: https://www.arso.gov.si/xml/zrak/ones_zrak_urni_podatki_7dni.xml
     outs:
     - path: data/raw/air/air_data.xml
       hash: md5
-      md5: dc61df8f3abc00445cec356ba1eab86f
-      size: 1170075
+      md5: c30f63848a39ba6607b66b102430587c
+      size: 1169936
   preprocess:
     cmd: "uv run python src/data/preprocess_air_data.py\ngit commit -am \"Updated
       preprocessed air data on `date` with DVC pipeline and GitHub workflows\" ||
@@ -25,8 +24,8 @@ stages:
     deps:
     - path: data/raw/air/air_data.xml
       hash: md5
-      md5: dc61df8f3abc00445cec356ba1eab86f
-      size: 1170075
+      md5: 9c75499c56e68853a2cb7992c02ff2aa
+      size: 1168874
     - path: src/data/preprocess_air_data.py
       hash: md5
       md5: fdc54d03a62ec35f826fc4f19a376d77
@@ -37,16 +36,16 @@ stages:
     outs:
     - path: data/preprocessed/air
       hash: md5
-      md5: bef6b9ad2865e896bbc27659bfca433e.dir
-      size: 81542
+      md5: b6735b2c48fcfc609a907d7ce1db1898.dir
+      size: 82636
       nfiles: 23
   validate:
     cmd: uv run python src/data/validate_air_data.py
     deps:
     - path: data/preprocessed/air
       hash: md5
-      md5: bef6b9ad2865e896bbc27659bfca433e.dir
-      size: 81542
+      md5: b6735b2c48fcfc609a907d7ce1db1898.dir
+      size: 82636
       nfiles: 23
     - path: src/data/validate_air_data.py
       hash: md5
