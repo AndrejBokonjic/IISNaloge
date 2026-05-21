@@ -75,3 +75,44 @@ stages:
       md5: 8b42b8815e2fb8a17bab94450892f3fc.dir
       size: 83483
       nfiles: 23
+  train:
+    cmd: "uv run python src/model/train.py\ngit commit -am \"Updated model on `date`
+      with DVC pipeline and GitHub workflows\" || true\ngit push || true\ndvc push
+      || true\n"
+    deps:
+    - path: data/preprocessed/air/
+      hash: md5
+      md5: b559a9591445c7ade4b1118798e8e2db.dir
+      size: 81563
+      nfiles: 23
+    - path: data/reference/air
+      hash: md5
+      md5: 186e2fea16d0210b3e1adf6fcda517b4.dir
+      size: 83480
+      nfiles: 23
+    - path: gx/uncommitted
+      hash: md5
+      md5: 33d98d250b98593da02b3e4615c21f33.dir
+      size: 17102618
+      nfiles: 466
+    - path: src/model/preprocess.py
+      hash: md5
+      md5: 5bc9eff00167913644a991b91eb5bb67
+      size: 1183
+    - path: src/model/train.py
+      hash: md5
+      md5: 0750623538b9a4a8dcd9b3674c93b773
+      size: 3961
+    params:
+      params.yaml:
+        train.random_state: 42
+        train.station: E410
+        train.target_col: pm10
+        train.test_size: 48
+        train.window_size: 24
+    outs:
+    - path: models/
+      hash: md5
+      md5: 08ad799e28e7d2b5e73f22a4253f2aca.dir
+      size: 8538687
+      nfiles: 42
