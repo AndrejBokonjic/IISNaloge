@@ -47,8 +47,12 @@ stages:
       md5: 7fde0bd93b904bcff87b52448da011c8.dir
       size: 81557
       nfiles: 23
+    - path: src/data/run_checkpoint.py
+      hash: md5
+      md5: 8464b625a16c345997de2b99d744fb2e
+      size: 1487
     outs:
-    - path: gx
+    - path: gx/uncommitted
       hash: md5
       md5: 9ad1ca10181d7f4a3343a421174c0a74.dir
       size: 17197495
