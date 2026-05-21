@@ -40,17 +40,16 @@ stages:
       size: 81557
       nfiles: 23
   validate:
-    cmd: uv run python src/data/validate_air_data.py
+    cmd: "uv run python src/data/run_checkpoint.py\n"
     deps:
-    - path: data/preprocessed/air
+    - path: data/preprocessed/air/
       hash: md5
-      md5: b6735b2c48fcfc609a907d7ce1db1898.dir
-      size: 82636
+      md5: 8829c363a2647b10215d59237b2575d1.dir
+      size: 81557
       nfiles: 23
-    - path: src/data/validate_air_data.py
+    outs:
+    - path: gx
       hash: md5
-      md5: ccb1c0706da6ef259a74279c663e50b8
-      size: 1427
-    params:
-      params.yaml:
-        preprocess.station: E410
+      md5: 476dea96a786be499213b05b726b4785.dir
+      size: 15860971
+      nfiles: 473

@@ -12,3 +12,4 @@ wheels/
 gx/checkpoints/
 gx/expectations/
 gx/uncommitted/
+/gx
