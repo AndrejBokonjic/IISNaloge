@@ -5,10 +5,10 @@ Zagon: uv run python gx/run_checkpoint.py
 
 import sys
 from pathlib import Path
-
 import great_expectations as gx
 
-context = gx.get_context()
+gx_dir = Path(__file__).parent
+context = gx.get_context(context_root_dir=str(gx_dir))
 
 # Poišči vsa merilna mesta
 preprocessed_dir = Path(__file__).parent.parent / "data/preprocessed/air"
