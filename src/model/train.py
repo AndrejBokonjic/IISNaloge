@@ -127,6 +127,7 @@ for station in stations:
             mlflow.log_artifact(pipeline_path)
 
             print(f"✅ Model shranjen: {model_path}")
+            mlflow.end_run(status="FINISHED")
 
     except Exception as e:
         print(f"⚠️  Napaka za {station}: {e}, preskakujem.")
