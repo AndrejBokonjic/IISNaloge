@@ -24,8 +24,8 @@ stages:
     deps:
     - path: data/raw/air/air_data.xml
       hash: md5
-      md5: a4c6cde753e55f01b32f166b064edf61
-      size: 1169824
+      md5: 176dc95e73188c535c2899e3d5bef644
+      size: 1169492
     - path: src/data/preprocess_air_data.py
       hash: md5
       md5: fdc54d03a62ec35f826fc4f19a376d77
@@ -36,16 +36,16 @@ stages:
     outs:
     - path: data/preprocessed/air
       hash: md5
-      md5: b7f55b422fce8e0eefbd2dc406ef7352.dir
-      size: 81580
+      md5: 0efc385003d91b01b9ea1b2ecb0f688b.dir
+      size: 81702
       nfiles: 23
   validate:
     cmd: "uv run python src/data/setup_ge.py\nuv run python src/data/run_checkpoint.py\n"
     deps:
     - path: data/preprocessed/air/
       hash: md5
-      md5: b7f55b422fce8e0eefbd2dc406ef7352.dir
-      size: 81580
+      md5: 0efc385003d91b01b9ea1b2ecb0f688b.dir
+      size: 81702
       nfiles: 23
     - path: src/data/run_checkpoint.py
       hash: md5
@@ -63,21 +63,21 @@ stages:
       nfiles: 23
     - path: gx/expectations
       hash: md5
-      md5: f93ed9679121580efe21027b1cc90581.dir
+      md5: f5bdaad5cd32111db9aa7cb38e8d878b.dir
       size: 45274
       nfiles: 24
     - path: gx/uncommitted
       hash: md5
-      md5: ea6ff6b074c9b4f8fdeb0741cb642f5d.dir
-      size: 23786095
-      nfiles: 696
+      md5: 4210f2f73baad321800e6403f906533d.dir
+      size: 25122832
+      nfiles: 742
   test_data:
     cmd: "uv run python src/data/test_data.py\n"
     deps:
     - path: data/preprocessed/air/
       hash: md5
-      md5: b7f55b422fce8e0eefbd2dc406ef7352.dir
-      size: 81580
+      md5: 0efc385003d91b01b9ea1b2ecb0f688b.dir
+      size: 81702
       nfiles: 23
     - path: src/data/test_data.py
       hash: md5
@@ -86,8 +86,8 @@ stages:
     outs:
     - path: data/reference/air
       hash: md5
-      md5: 064b4bb2f4339fba9cf9726134c0838e.dir
-      size: 83478
+      md5: 0dd238b5a1217b84ca90bb0c85e70d2a.dir
+      size: 83488
       nfiles: 23
   train:
     cmd: "uv run python src/model/train.py\ngit commit -am \"Updated model on `date`
