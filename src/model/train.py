@@ -7,7 +7,6 @@ from pathlib import Path
 import yaml
 import numpy as np
 import mlflow
-import mlflow.tensorflow
 import pandas as pd
 import tensorflow as tf
 from sklearn.compose import ColumnTransformer
@@ -96,8 +95,6 @@ for station in stations:
             mlflow.log_param("window_size", window_size)
             mlflow.log_param("target_col", target_col)
             mlflow.log_param("random_state", random_state)
-
-            mlflow.tensorflow.autolog()
 
             model = build_model((X_train.shape[1], X_train.shape[2]))
             model.fit(X_train, y_train, epochs=20, batch_size=16, verbose=1)
